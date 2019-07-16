@@ -55,3 +55,48 @@
     - '{{ partynest__root_dir }}'
     - '{{ partynest__root_dir }}/shared'
     - '{{ partynest__root_dir }}/shared/config'
+
+- name: Create general service
+  template:
+    src: templates/partynest.service
+    dest: '/etc/systemd/system/{{ partynest__service }}.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: Update Partynest general service
+
+- name: Create restart service
+  template:
+    src: templates/partynest-restart.service
+    dest: '/etc/systemd/system/{{ partynest__service }}-restart.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: Update Partynest restarter service
+
+- name: Create restart path
+  template:
+    src: templates/partynest-restart.path
+    dest: '/etc/systemd/system/{{ partynest__service }}-restart.path'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: Update Partynest restarter path
+
+- name: Create web service
+  template:
+    src: templates/partynest-web.service
+    dest: '/etc/systemd/system/{{ partynest__service }}-web.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: Update Partynest web service
+
+- name: Create worker service
+  template:
+    src: templates/partynest-worker.service
+    dest: '/etc/systemd/system/{{ partynest__service }}-worker.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: Update Partynest worker service

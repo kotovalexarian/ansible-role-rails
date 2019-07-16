@@ -1,0 +1,11 @@
+[Unit]
+After=network.target
+Description={{ partynest__restart_descr }}
+
+[Service]
+ExecStart=/bin/systemctl restart {{ partynest__service }}.service
+Type=oneshot
+WorkingDirectory={{ partynest__root_dir }}/current
+
+[Install]
+WantedBy=multi-user.target

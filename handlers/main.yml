@@ -1,0 +1,31 @@
+---
+- name: Update Partynest general service
+  systemd:
+    daemon_reload: true
+    name: '{{ partynest__service }}.service'
+    enabled: true
+
+- name: Update Partynest restarter service
+  systemd:
+    daemon_reload: true
+    name: '{{ partynest__service }}-restart.service'
+    enabled: false
+
+- name: Update Partynest restarter path
+  systemd:
+    daemon_reload: true
+    name: '{{ partynest__service }}-restart.path'
+    enabled: true
+    state: restarted
+
+- name: Update Partynest web service
+  systemd:
+    daemon_reload: true
+    name: '{{ partynest__service }}-web.service'
+    enabled: true
+
+- name: Update Partynest worker service
+  systemd:
+    daemon_reload: true
+    name: '{{ partynest__service }}-worker.service'
+    enabled: true

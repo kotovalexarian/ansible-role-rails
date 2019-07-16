@@ -1,0 +1,19 @@
+[Unit]
+After=network.target
+PartOf={{ partynest__service }}.service
+Description={{ partynest__web_descr }}
+
+[Service]
+ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@partynest do bundle exec puma --environment production
+Group={{ partynest__group }}
+Restart=always
+RestartSec=1
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier={{ partynest__service }}-web
+Type=simple
+User={{ partynest__user }}
+WorkingDirectory={{ partynest__root_dir }}/current
+
+[Install]
+WantedBy=multi-user.target

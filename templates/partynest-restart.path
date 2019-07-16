@@ -1,0 +1,5 @@
+[Path]
+PathModified={{ partynest__root_dir }}/revisions.log
+
+[Install]
+WantedBy=multi-user.target

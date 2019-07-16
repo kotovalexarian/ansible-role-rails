@@ -3,3 +3,4 @@ partynest__user: partynest
 partynest__group: partynest
 partynest__deploy_user: kotovalexarian
 partynest__root_dir: '/opt/partynest'
+partynest__service: partynest
