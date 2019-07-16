@@ -26,7 +26,7 @@ class ActionModule(ActionBase):
         result['failed'] = False
 
         for var_name in self.private_var_names:
-            validator = self.getattr('validate_' + var_name)
+            validator = getattr(self, 'validate_' + var_name)
             value = task_vars[var_name]
             msg_part = validator(value)
 
