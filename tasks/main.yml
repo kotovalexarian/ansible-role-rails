@@ -31,3 +31,15 @@
     "rvm ruby-2.6.2@partynest do
     gem install bundler -v '~> 2.0'"
   when: "partynest__bundler_result.stdout is search('false')"
+
+- name: Create system group
+  group:
+    name: '{{ partynest__group }}'
+    system: true
+
+- name: Create system user
+  user:
+    name: '{{ partynest__user }}'
+    group: '{{ partynest__group }}'
+    system: true
+    create_home: false
