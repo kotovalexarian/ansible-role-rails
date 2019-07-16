@@ -70,6 +70,5 @@ class ActionModule(ActionBase):
             return 'has invalid format'
 
     def is_dir_path(self, value):
-        return os.path.isdir(value) or \
-                not os.path.exists(value) and \
-                os.access(os.path.dirname(value), os.W_OK)
+        parent_dir = os.path.dirname(value)
+        return os.path.isdir(parent_dir) and os.access(parent_dir, os.W_OK)
