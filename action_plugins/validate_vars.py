@@ -54,7 +54,7 @@ class ActionModule(ActionBase):
     def validate_root_dir(self, value):
         if not isinstance(value, str):
             return 'is not str'
-        if not self.is_dir_path(value):
+        if not os.path.isdir(os.path.dirname(value)):
             return 'is not writable directory path'
 
     def validate_service(self, value):
@@ -68,7 +68,3 @@ class ActionModule(ActionBase):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
-
-    def is_dir_path(self, value):
-        parent_dir = os.path.dirname(value)
-        return os.path.isdir(parent_dir) and os.access(parent_dir, os.W_OK)
