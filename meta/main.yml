@@ -1,6 +1,4 @@
 ---
-dependencies: []
-
 galaxy_info:
   role_name: partynest
   author: Alex Kotov
@@ -16,3 +14,14 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - bionic  # Ubuntu 18.04 LTS Bionic Beaver
+
+dependencies:
+  - role: rvm.ruby
+    vars:
+      rvm1_rvm_version: stable
+      rvm1_rvm_check_for_updates: true
+      rvm1_install_path: '/usr/local/rvm'
+      rvm1_install_flags: '--auto-dotfiles'
+      rvm1_user: root
+      rvm1_rubies: ['ruby-2.6.2']
+      rvm1_bundler_install: true
