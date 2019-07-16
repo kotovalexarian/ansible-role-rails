@@ -17,6 +17,7 @@ galaxy_info:
 
 dependencies:
   - role: rvm.ruby
+    version: v2.1.2
     vars:
       rvm1_rvm_version: stable
       rvm1_rvm_check_for_updates: true
