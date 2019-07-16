@@ -26,13 +26,13 @@ class ActionModule(ActionBase):
         result['failed'] = False
 
         for var_name in self.private_var_names:
+            full_var_name = '%s__%s' % (self.prefix, var_name)
             validator = getattr(self, 'validate_' + var_name)
-            value = task_vars[var_name]
+            value = task_vars[full_var_name]
             msg_part = validator(value)
 
             if msg_part is not None:
-                full_msg = 'Invalid var "%s__%s": %s' % \
-                        (self.prefix, var_name, msg_part)
+                full_msg = 'Invalid var "%s": %s' % (full_var_name, msg_part)
                 result['failed'] = True
                 result['msg'] = full_msg
                 return result
