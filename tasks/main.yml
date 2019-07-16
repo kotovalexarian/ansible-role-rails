@@ -9,3 +9,9 @@
       - libpq-dev
       - patch
       - zlib1g-dev
+
+- name: Create RVM gemset
+  shell: "/bin/bash --login -c 'rvm use ruby-2.6.2@partynest --create'"
+  register: partynest__gemset_result
+  changed_when: >-
+    "partynest__gemset_result.stdout is search('ruby-2.6.2 - #gemset created ')"
