@@ -1,0 +1,11 @@
+---
+- name: Install system packages
+  apt:
+    update_cache: true
+    name:
+      - build-essential
+      - gnupg2
+      - liblzma-dev
+      - libpq-dev
+      - patch
+      - zlib1g-dev
