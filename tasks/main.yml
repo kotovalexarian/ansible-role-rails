@@ -43,3 +43,15 @@
     group: '{{ partynest__group }}'
     system: true
     create_home: false
+
+- name: Create application directories
+  file:
+    state: directory
+    path: '{{ item }}'
+    mode: 'u=rwx,g=rwxs,o=rx'
+    owner: '{{ partynest__deploy_user }}'
+    group: '{{ partynest__group }}'
+  with_items:
+    - '{{ partynest__root_dir }}'
+    - '{{ partynest__root_dir }}/shared'
+    - '{{ partynest__root_dir }}/shared/config'
