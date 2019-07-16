@@ -3,6 +3,7 @@ import os
 
 from ansible.plugins.action import ActionBase
 
+
 class ActionModule(ActionBase):
     prefix = 'partynest'
 
@@ -30,45 +31,45 @@ class ActionModule(ActionBase):
             msg_part = validator(value)
 
             if msg_part is not None:
-                full_msg = \
-                    'Invalid var "%s__%s": %s' % (self.prefix, var_name, msg)
+                full_msg = 'Invalid var "%s__%s": %s' % \
+                        (self.prefix, var_name, msg_part)
                 result['failed'] = True
                 result['msg'] = full_msg
                 return result
 
         return result
 
-    def validate_deploy_user(value):
+    def validate_deploy_user(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
 
-    def validate_group(value):
+    def validate_group(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
 
-    def validate_root_dir(value):
+    def validate_root_dir(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.is_dir_path(value):
             return 'is not writable directory path'
 
-    def validate_service(value):
+    def validate_service(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
 
-    def validate_user(value):
+    def validate_user(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
 
-    def is_dir_path(value):
+    def is_dir_path(self, value):
         return os.path.isdir(value) or \
                 not os.path.exists(value) and \
                 os.access(os.path.dirname(value), os.W_OK)
