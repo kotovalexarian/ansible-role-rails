@@ -1,5 +1,6 @@
 [Unit]
 After=network.target
+After={{ partynest__service }}.service
 PartOf={{ partynest__service }}.service
 Description={{ partynest__web_descr }}
 
@@ -16,4 +17,4 @@ User={{ partynest__user }}
 WorkingDirectory={{ partynest__root_dir }}/current
 
 [Install]
-WantedBy=multi-user.target
+WantedBy={{ partynest__service }}.service
