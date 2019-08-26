@@ -5,10 +5,6 @@ PartOf={{ partynest__service }}.service
 Description={{ partynest__worker_descr }}
 
 [Service]
-Environment=POSTGRES_HOST={{ partynest__postgresql_host }}
-Environment=POSTGRES_PORT={{ partynest__postgresql_port }}
-Environment=POSTGRES_DB={{ partynest__postgresql_db }}
-Environment=POSTGRES_USER={{ partynest__postgresql_user }}
 ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@partynest do bundle exec sidekiq --environment production
 Group={{ partynest__group }}
 Restart=always

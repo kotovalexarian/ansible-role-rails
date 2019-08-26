@@ -13,10 +13,6 @@ class ActionModule(ActionBase):
         'root_dir',
         'service',
         'user',
-        'postgresql_host',
-        'postgresql_port',
-        'postgresql_db',
-        'postgresql_user',
     ]
 
     common_name_re = re.compile(r'^[a-z_][a-z0-9_-]{0,30}(\$|[a-z0-9_-])?$')
@@ -72,21 +68,3 @@ class ActionModule(ActionBase):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
-
-    def validate_postgresql_host(self, value):
-        if not isinstance(value, str):
-            return 'is not str'
-
-    def validate_postgresql_port(self, value):
-        if not isinstance(value, int):
-            return 'is not integer'
-        if not (value > 0 and value < 2**16):
-            return 'not in range'
-
-    def validate_postgresql_db(self, value):
-        if not isinstance(value, str):
-            return 'is not str'
-
-    def validate_postgresql_user(self, value):
-        if not isinstance(value, str):
-            return 'is not str'

@@ -4,7 +4,3 @@ partynest__group: partynest
 partynest__deploy_user: kotovalexarian
 partynest__root_dir: '/opt/partynest'
 partynest__service: partynest
-partynest__postgresql_host: localhost
-partynest__postgresql_port: 5432
-partynest__postgresql_db: partynest_production
-partynest__postgresql_user: partynest_staff
