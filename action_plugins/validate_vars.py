@@ -83,13 +83,13 @@ class ActionModule(ActionBase):
         if not (value > 0 and value < 2**16):
             return 'not in range'
 
-    def validate_postgresql_db:
+    def validate_postgresql_db(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
 
-    def validate_postgresql_user:
+    def validate_postgresql_user(self, value):
         if not isinstance(value, str):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
