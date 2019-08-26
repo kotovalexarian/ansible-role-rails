@@ -3,6 +3,10 @@ After=network.target
 Description={{ partynest__general_descr }}
 
 [Service]
+Environment=POSTGRES_HOST={{ partynest__postgresql_host }}
+Environment=POSTGRES_PORT={{ partynest__postgresql_port }}
+Environment=POSTGRES_DB={{ partynest__postgresql_db }}
+Environment=POSTGRES_USER={{ partynest__postgresql_user }}
 ExecStart=/bin/true
 ExecReload=/bin/true
 RemainAfterExit=yes
