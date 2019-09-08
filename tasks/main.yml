@@ -23,7 +23,7 @@
   shell: >
     /bin/bash --login -c
     "rvm ruby-2.6.2@partynest do
-    gem info bundler --installed --version '~>2.0'"
+    gem info bundler --installed --version '~> 2.0'"
     || true
   register: partynest__bundler_result
   changed_when: false
