@@ -66,7 +66,7 @@
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: Update Partynest general service
+  notify: partynest | Update Partynest general service
 
 - name: Create restart service
   template:
@@ -75,7 +75,7 @@
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: Update Partynest restarter service
+  notify: partynest | Update Partynest restarter service
 
 - name: Create restart path
   template:
@@ -84,7 +84,7 @@
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: Update Partynest restarter path
+  notify: partynest | Update Partynest restarter path
 
 - name: Create web service
   template:
@@ -93,7 +93,7 @@
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: Update Partynest web service
+  notify: partynest | Update Partynest web service
 
 - name: Create worker service
   template:
@@ -102,4 +102,4 @@
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: Update Partynest worker service
+  notify: partynest | Update Partynest worker service
