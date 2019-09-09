@@ -5,6 +5,7 @@ PartOf={{ partynest__service }}.service
 Description={{ partynest__web_descr }}
 
 [Service]
+Environment=PARTYNEST_RESTRICT={{ 'yes' if partynest__restrict else 'no' }}
 ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@partynest do bundle exec puma --environment production
 Group={{ partynest__group }}
 Restart=always

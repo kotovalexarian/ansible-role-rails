@@ -1,4 +1,5 @@
 ---
+partynest__restrict: true
 partynest__user: partynest
 partynest__group: partynest
 partynest__deploy_user: kotovalexarian
