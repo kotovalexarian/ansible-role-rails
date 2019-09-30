@@ -11,6 +11,7 @@
       - liblzma-dev
       - libpq-dev
       - patch
+      - postgresql-client
       - zlib1g-dev
 
 - name: Create RVM gemset
