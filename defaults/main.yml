@@ -1,13 +1,5 @@
 ---
-partynest__restrict: true
 partynest__user: partynest
 partynest__group: partynest
-partynest__deploy_user: kotovalexarian
 partynest__root_dir: '/opt/partynest'
 partynest__service: partynest
-partynest__env: production
-partynest__pg_host: 'private-db-postgresql-ams3-63609-do-user-4455684-0.db.ondigitalocean.com'
-partynest__pg_port: 25060
-partynest__pg_db: partynest_production
-partynest__pg_user: doadmin
-partynest__pg_pass: 'some password'
