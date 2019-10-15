@@ -9,6 +9,7 @@ class ActionModule(ActionBase):
 
     private_var_names = [
         'deploy_user',
+        'env',
         'group',
         'root_dir',
         'service',
@@ -44,6 +45,12 @@ class ActionModule(ActionBase):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
+
+    def validate_env(self, value):
+        if not isinstance(value, str):
+            return 'is not str'
+        if value not in ['production', 'staging']:
+            return 'is invalid'
 
     def validate_group(self, value):
         if not isinstance(value, str):
