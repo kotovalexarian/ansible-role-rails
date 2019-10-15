@@ -84,8 +84,7 @@ class ActionModule(ActionBase):
             return 'has invalid format'
 
     def validate_pg_pass(self, value):
-        if not isinstance(value, str):
-            return 'is not str'
+        pass
 
     def validate_pg_port(self, value):
         if not isinstance(value, int):
