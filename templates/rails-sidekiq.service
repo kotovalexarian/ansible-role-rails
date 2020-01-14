@@ -2,16 +2,16 @@
 After=network.target
 After={{ rails__service }}.service
 PartOf={{ rails__service }}.service
-Description={{ rails__web_descr }}
+Description={{ rails__sidekiq_descr }}
 
 [Service]
-ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@{{ rails__gemset }} do bundle exec puma --environment {{ rails__env }}
+ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@{{ rails__gemset }} do bundle exec sidekiq --environment {{ rails__env }}
 Group={{ rails__group }}
 Restart=always
 RestartSec=1
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier={{ rails__service }}-web
+SyslogIdentifier={{ rails__service }}-sidekiq
 Type=simple
 User={{ rails__user }}
 WorkingDirectory={{ rails__root_dir }}/current

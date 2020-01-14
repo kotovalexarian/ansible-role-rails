@@ -18,14 +18,14 @@
     enabled: true
     state: restarted
 
-- name: rails | Update web service
+- name: rails | Update Puma service
   systemd:
     daemon_reload: true
-    name: '{{ rails__service }}-web.service'
+    name: '{{ rails__service }}-puma.service'
     enabled: true
 
-- name: rails | Update worker service
+- name: rails | Update Sidekiq service
   systemd:
     daemon_reload: true
-    name: '{{ rails__service }}-worker.service'
+    name: '{{ rails__service }}-sidekiq.service'
     enabled: true

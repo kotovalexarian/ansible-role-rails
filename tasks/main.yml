@@ -101,20 +101,20 @@
     group: root
   notify: rails | Update restarter path
 
-- name: Create web service
+- name: Create Puma service
   template:
-    src: templates/rails-web.service
-    dest: '/etc/systemd/system/{{ rails__service }}-web.service'
+    src: templates/rails-puma.service
+    dest: '/etc/systemd/system/{{ rails__service }}-puma.service'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: rails | Update web service
+  notify: rails | Update Puma service
 
-- name: Create worker service
+- name: Create Sidekiq service
   template:
-    src: templates/rails-worker.service
-    dest: '/etc/systemd/system/{{ rails__service }}-worker.service'
+    src: templates/rails-sidekiq.service
+    dest: '/etc/systemd/system/{{ rails__service }}-sidekiq.service'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: rails | Update worker service
+  notify: rails | Update Sidekiq service
