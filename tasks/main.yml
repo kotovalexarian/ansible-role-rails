@@ -29,7 +29,8 @@
       - zlib1g-dev
 
 - name: Create RVM gemset
-  shell: "/bin/bash --login -c 'rvm use ruby-2.6.2@{{ rails__gemset }} --create'"
+  shell: >
+    /bin/bash --login -c "rvm use ruby-2.6.2@{{ rails__gemset }} --create"
   register: rails__gemset_result
   changed_when: >-
     "rails__gemset_result.stdout is search('ruby-2.6.2 - #gemset created ')"

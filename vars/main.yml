@@ -1,5 +1,5 @@
 ---
-rails__general_descr:  Rails
-rails__restart_descr:  Rails restart
-rails__puma_descr:     Rails Puma web server
-rails__sidekiq_descr:  Rails Sidekiq job processing
+rails__general_descr: Rails
+rails__restart_descr: Rails restart
+rails__puma_descr: Rails Puma web server
+rails__sidekiq_descr: Rails Sidekiq job processing
