@@ -1,19 +1,27 @@
 ---
 galaxy_info:
-  role_name: partynest
+  role_name: rails
   author: Alex Kotov
-  description: >-
-    A web application to manage political party members and supporters.
+  description: Prepare to deploy Rails with Capistrano
   license: MIT
   min_ansible_version: 2.8
 
   galaxy_tags:
-    - politics
+    - capistrano
+    - rails
+    - puma
+    - sidekiq
 
   platforms:
+    - name: Debian
+      versions:
+        - stretch  # Debian 9 Stretch
+        - buster   # Debian 10 Buster
     - name: Ubuntu
       versions:
+        - xenial  # Ubuntu 16.04 LTS Xenial Xerus
         - bionic  # Ubuntu 18.04 LTS Bionic Beaver
+        - eoan    # Ubuntu 19.10 Eoan Ermine
 
 dependencies:
   - role: rvm.ruby
