@@ -45,7 +45,19 @@ class ActionModule(ActionBase):
             msg_part = validator(value)
 
             if msg_part is not None:
-                full_msg = "Invalid var '%s': %s" % (full_var_name, msg_part)
+                value = str(value)
+
+                if len(value) <= 30:
+                    partial_value = value
+                else:
+                    partial_value = '%s...' % value[0:30]
+
+                full_msg = "Invalid var '%s' with value '%s': %s" % (
+                    full_var_name,
+                    partial_value,
+                    msg_part,
+                )
+
                 result['failed'] = True
                 result['msg'] = full_msg
                 return result
