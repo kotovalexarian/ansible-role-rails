@@ -1,5 +1,4 @@
 import re
-import os
 
 from ansible.plugins.action import ActionBase
 
@@ -18,6 +17,8 @@ class ActionModule(ActionBase):
         'service',
         'user',
     ]
+
+    path_re = re.compile(r'^/[-/a-z0-9]*$')
 
     common_name_re = re.compile(r'^[a-z_][a-z0-9_-]{0,30}(\$|[a-z0-9_-])?$')
 
@@ -91,8 +92,8 @@ class ActionModule(ActionBase):
     def validate_root_dir(self, value):
         if not isinstance(value, str):
             return 'is not str'
-        if not os.path.isdir(os.path.dirname(value)):
-            return 'is not writable directory path'
+        if not self.path_re.fullmatch(value):
+            return 'has invalid format'
 
     def validate_ruby(self, value):
         if not isinstance(value, str):
@@ -103,8 +104,8 @@ class ActionModule(ActionBase):
     def validate_rvm(self, value):
         if not isinstance(value, str):
             return 'is not str'
-        if not os.path.exists(value):
-            return 'does not exist'
+        if not self.path_re.fullmatch(value):
+            return 'has invalid format'
 
     def validate_service(self, value):
         if not isinstance(value, str):
