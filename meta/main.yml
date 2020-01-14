@@ -1,4 +1,7 @@
 ---
+allow_duplicates: false
+dependencies: []
+
 galaxy_info:
   role_name: rails
   author: Alex Kotov
@@ -22,19 +25,3 @@ galaxy_info:
         - xenial  # Ubuntu 16.04 LTS Xenial Xerus
         - bionic  # Ubuntu 18.04 LTS Bionic Beaver
         - eoan    # Ubuntu 19.10 Eoan Ermine
-
-dependencies:
-  - role: kotovalexarian.common
-    version: v0.0.9
-    vars:
-      common__only_basics: true
-  - role: rvm.ruby
-    version: v2.1.2
-    vars:
-      rvm1_rvm_version: stable
-      rvm1_rvm_check_for_updates: true
-      rvm1_install_path: '/usr/local/rvm'
-      rvm1_install_flags: '--auto-dotfiles'
-      rvm1_user: root
-      rvm1_rubies: ['ruby-2.6.2']
-      rvm1_bundler_install: false

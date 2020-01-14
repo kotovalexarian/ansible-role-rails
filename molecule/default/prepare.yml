@@ -1,0 +1,22 @@
+---
+- name: Prepare
+  hosts: all
+  pre_tasks:
+    - name: Install packages
+      apt:
+        force_apt_get: true
+        update_cache: true
+        name:
+          - curl
+          - gnupg
+          - gnupg2
+  roles:
+    - name: rvm.ruby
+      vars:
+        rvm1_rvm_version: stable
+        rvm1_rvm_check_for_updates: true
+        rvm1_install_path: '/usr/local/rvm'
+        rvm1_install_flags: '--auto-dotfiles'
+        rvm1_user: root
+        rvm1_rubies: ['ruby-2.6.2']
+        rvm1_bundler_install: false

@@ -29,15 +29,15 @@
 
 - name: Create RVM gemset
   shell: >
-    /bin/bash --login -c "rvm use ruby-2.6.2@{{ rails__gemset }} --create"
+    /bin/bash --login -c "{{ rails__rvm }} use {{ rails__ruby }}@{{ rails__gemset }} --create"
   register: rails__gemset_result
   changed_when: >-
-    "rails__gemset_result.stdout is search('ruby-2.6.2 - #gemset created ')"
+    "rails__gemset_result.stdout is search(rails__ruby + ' - #gemset created ')"
 
 - name: Check Bundler
   shell: >
     /bin/bash --login -c
-    "rvm ruby-2.6.2@{{ rails__gemset }} do
+    "{{ rails__rvm }} {{ rails__ruby }}@{{ rails__gemset }} do
     gem info bundler --installed --version '~> 2.0'"
     || true
   register: rails__bundler_result
@@ -46,7 +46,7 @@
 - name: Install Bundler
   shell: >
     /bin/bash --login -c
-    "rvm ruby-2.6.2@{{ rails__gemset }} do
+    "{{ rails__rvm }} {{ rails__ruby }}@{{ rails__gemset }} do
     gem install bundler -v '~> 2.0'"
   when: "rails__bundler_result.stdout is search('false')"
 
