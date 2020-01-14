@@ -1,4 +1,6 @@
 ---
+rails__rvm_do: '{{ rails__rvm }} {{ rails__ruby }}@{{ rails__gemset }} do'
+
 rails__general_descr: Rails
 rails__restart_descr: Rails restart
 rails__puma_descr: Rails Puma web server
