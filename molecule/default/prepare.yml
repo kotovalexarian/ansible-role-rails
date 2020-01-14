@@ -1,6 +1,7 @@
 ---
 - name: Prepare
   hosts: all
+  become: true
   pre_tasks:
     - name: Install packages
       apt:
