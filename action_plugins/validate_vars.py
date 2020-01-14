@@ -5,7 +5,7 @@ from ansible.plugins.action import ActionBase
 
 
 class ActionModule(ActionBase):
-    prefix = 'partynest'
+    prefix = 'rails'
 
     private_var_names = [
         'deploy_user',

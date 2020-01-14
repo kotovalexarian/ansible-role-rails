@@ -1,5 +1,5 @@
 ---
-partynest__user: partynest
-partynest__group: partynest
-partynest__root_dir: '/opt/partynest'
-partynest__service: partynest
+rails__user: rails
+rails__group: rails
+rails__root_dir: '/opt/rails'
+rails__service: rails

@@ -1,13 +1,13 @@
 [Unit]
 After=network.target
-Description={{ partynest__general_descr }}
+Description={{ rails__general_descr }}
 
 [Service]
 ExecStart=/bin/true
 ExecReload=/bin/true
 RemainAfterExit=yes
 Type=oneshot
-WorkingDirectory={{ partynest__root_dir }}/current
+WorkingDirectory={{ rails__root_dir }}/current
 
 [Install]
 WantedBy=multi-user.target

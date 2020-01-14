@@ -30,9 +30,9 @@
 
 - name: Create RVM gemset
   shell: "/bin/bash --login -c 'rvm use ruby-2.6.2@partynest --create'"
-  register: partynest__gemset_result
+  register: rails__gemset_result
   changed_when: >-
-    "partynest__gemset_result.stdout is search('ruby-2.6.2 - #gemset created ')"
+    "rails__gemset_result.stdout is search('ruby-2.6.2 - #gemset created ')"
 
 - name: Check Bundler
   shell: >
@@ -40,7 +40,7 @@
     "rvm ruby-2.6.2@partynest do
     gem info bundler --installed --version '~> 2.0'"
     || true
-  register: partynest__bundler_result
+  register: rails__bundler_result
   changed_when: false
 
 - name: Install Bundler
@@ -48,17 +48,17 @@
     /bin/bash --login -c
     "rvm ruby-2.6.2@partynest do
     gem install bundler -v '~> 2.0'"
-  when: "partynest__bundler_result.stdout is search('false')"
+  when: "rails__bundler_result.stdout is search('false')"
 
 - name: Create system group
   group:
-    name: '{{ partynest__group }}'
+    name: '{{ rails__group }}'
     system: true
 
 - name: Create system user
   user:
-    name: '{{ partynest__user }}'
-    group: '{{ partynest__group }}'
+    name: '{{ rails__user }}'
+    group: '{{ rails__group }}'
     system: true
     create_home: false
 
@@ -67,54 +67,54 @@
     state: directory
     path: '{{ item }}'
     mode: 'u=rwx,g=rwxs,o=rx'
-    owner: '{{ partynest__deploy_user }}'
-    group: '{{ partynest__group }}'
+    owner: '{{ rails__deploy_user }}'
+    group: '{{ rails__group }}'
   with_items:
-    - '{{ partynest__root_dir }}'
-    - '{{ partynest__root_dir }}/shared'
-    - '{{ partynest__root_dir }}/shared/config'
+    - '{{ rails__root_dir }}'
+    - '{{ rails__root_dir }}/shared'
+    - '{{ rails__root_dir }}/shared/config'
 
 - name: Create general service
   template:
-    src: templates/partynest.service
-    dest: '/etc/systemd/system/{{ partynest__service }}.service'
+    src: templates/rails.service
+    dest: '/etc/systemd/system/{{ rails__service }}.service'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: partynest | Update Partynest general service
+  notify: rails | Update general service
 
 - name: Create restart service
   template:
-    src: templates/partynest-restart.service
-    dest: '/etc/systemd/system/{{ partynest__service }}-restart.service'
+    src: templates/rails-restart.service
+    dest: '/etc/systemd/system/{{ rails__service }}-restart.service'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: partynest | Update Partynest restarter service
+  notify: rails | Update restarter service
 
 - name: Create restart path
   template:
-    src: templates/partynest-restart.path
-    dest: '/etc/systemd/system/{{ partynest__service }}-restart.path'
+    src: templates/rails-restart.path
+    dest: '/etc/systemd/system/{{ rails__service }}-restart.path'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: partynest | Update Partynest restarter path
+  notify: rails | Update restarter path
 
 - name: Create web service
   template:
-    src: templates/partynest-web.service
-    dest: '/etc/systemd/system/{{ partynest__service }}-web.service'
+    src: templates/rails-web.service
+    dest: '/etc/systemd/system/{{ rails__service }}-web.service'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: partynest | Update Partynest web service
+  notify: rails | Update web service
 
 - name: Create worker service
   template:
-    src: templates/partynest-worker.service
-    dest: '/etc/systemd/system/{{ partynest__service }}-worker.service'
+    src: templates/rails-worker.service
+    dest: '/etc/systemd/system/{{ rails__service }}-worker.service'
     mode: 'u=rw,g=r,o=r'
     owner: root
     group: root
-  notify: partynest | Update Partynest worker service
+  notify: rails | Update worker service

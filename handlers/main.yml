@@ -1,31 +1,31 @@
 ---
-- name: partynest | Update Partynest general service
+- name: rails | Update general service
   systemd:
     daemon_reload: true
-    name: '{{ partynest__service }}.service'
+    name: '{{ rails__service }}.service'
     enabled: true
 
-- name: partynest | Update Partynest restarter service
+- name: rails | Update restarter service
   systemd:
     daemon_reload: true
-    name: '{{ partynest__service }}-restart.service'
+    name: '{{ rails__service }}-restart.service'
     enabled: false
 
-- name: partynest | Update Partynest restarter path
+- name: rails | Update restarter path
   systemd:
     daemon_reload: true
-    name: '{{ partynest__service }}-restart.path'
+    name: '{{ rails__service }}-restart.path'
     enabled: true
     state: restarted
 
-- name: partynest | Update Partynest web service
+- name: rails | Update web service
   systemd:
     daemon_reload: true
-    name: '{{ partynest__service }}-web.service'
+    name: '{{ rails__service }}-web.service'
     enabled: true
 
-- name: partynest | Update Partynest worker service
+- name: rails | Update worker service
   systemd:
     daemon_reload: true
-    name: '{{ partynest__service }}-worker.service'
+    name: '{{ rails__service }}-worker.service'
     enabled: true

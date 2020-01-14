@@ -1,0 +1,21 @@
+[Unit]
+After=network.target
+After={{ rails__service }}.service
+PartOf={{ rails__service }}.service
+Description={{ rails__worker_descr }}
+
+[Service]
+Environment=PARTYNEST_RESTRICT={{ 'yes' if partynest__restrict else 'no' }}
+ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@partynest do bundle exec sidekiq --environment {{ rails__env }}
+Group={{ rails__group }}
+Restart=always
+RestartSec=1
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier={{ rails__service }}-worker
+Type=simple
+User={{ rails__user }}
+WorkingDirectory={{ rails__root_dir }}/current
+
+[Install]
+WantedBy={{ rails__service }}.service

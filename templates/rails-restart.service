@@ -1,0 +1,11 @@
+[Unit]
+After=network.target
+Description={{ rails__restart_descr }}
+
+[Service]
+ExecStart=/bin/systemctl restart {{ rails__service }}.service
+Type=oneshot
+WorkingDirectory={{ rails__root_dir }}/current
+
+[Install]
+WantedBy=multi-user.target
