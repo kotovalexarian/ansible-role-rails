@@ -13,11 +13,14 @@ class ActionModule(ActionBase):
         'gemset',
         'group',
         'root_dir',
+        'ruby',
         'service',
         'user',
     ]
 
     common_name_re = re.compile(r'^[a-z_][a-z0-9_-]{0,30}(\$|[a-z0-9_-])?$')
+
+    ruby_version_re = re.compile(r'^ruby-[0-9]+\.[0-9]+\.[0-9]+$')
 
     domain_name_re = re.compile(
         r'^(?:[a-z0-9]'  # First character of the domain
@@ -77,6 +80,12 @@ class ActionModule(ActionBase):
             return 'is not str'
         if not os.path.isdir(os.path.dirname(value)):
             return 'is not writable directory path'
+
+    def validate_ruby(self, value):
+        if not isinstance(value, str):
+            return 'is not str'
+        if not self.ruby_version_re.fullmatch(value):
+            return 'has invalid format'
 
     def validate_service(self, value):
         if not isinstance(value, str):
