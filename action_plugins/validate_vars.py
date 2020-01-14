@@ -12,12 +12,6 @@ class ActionModule(ActionBase):
         'env',
         'gemset',
         'group',
-        'pg_db',
-        'pg_host',
-        'pg_pass',
-        'pg_port',
-        'pg_user',
-        'restrict',
         'root_dir',
         'service',
         'user',
@@ -77,37 +71,6 @@ class ActionModule(ActionBase):
             return 'is not str'
         if not self.common_name_re.fullmatch(value):
             return 'has invalid format'
-
-    def validate_pg_db(self, value):
-        if not isinstance(value, str):
-            return 'is not str'
-        if not self.common_name_re.fullmatch(value):
-            return 'has invalid format'
-
-    def validate_pg_host(self, value):
-        if not isinstance(value, str):
-            return 'is not str'
-        if not self.domain_name_re.fullmatch(value):
-            return 'has invalid format'
-
-    def validate_pg_pass(self, value):
-        pass
-
-    def validate_pg_port(self, value):
-        if not isinstance(value, int):
-            return 'is not int'
-        if not (1 <= value < 2**16):
-            return 'is invalid'
-
-    def validate_pg_user(self, value):
-        if not isinstance(value, str):
-            return 'is not str'
-        if not self.common_name_re.fullmatch(value):
-            return 'has invalid format'
-
-    def validate_restrict(self, value):
-        if not isinstance(value, bool):
-            return 'is not bool'
 
     def validate_root_dir(self, value):
         if not isinstance(value, str):
