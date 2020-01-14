@@ -5,7 +5,6 @@ PartOf={{ rails__service }}.service
 Description={{ rails__worker_descr }}
 
 [Service]
-Environment=PARTYNEST_RESTRICT={{ 'yes' if partynest__restrict else 'no' }}
 ExecStart=/usr/local/rvm/bin/rvm ruby-2.6.2@partynest do bundle exec sidekiq --environment {{ rails__env }}
 Group={{ rails__group }}
 Restart=always
