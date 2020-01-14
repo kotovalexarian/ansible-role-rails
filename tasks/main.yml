@@ -36,9 +36,7 @@
 - name: Create RVM gemset
   shell: >
     /bin/bash --login -c "{{ rails__rvm }} use {{ rails__ruby }}@{{ rails__gemset }} --create"
-  register: rails__gemset_result
-  changed_when: >-
-    "rails__gemset_result.stdout is search(rails__ruby + ' - #gemset created ')"
+  changed_when: false
 
 - name: Check Bundler
   shell: >
