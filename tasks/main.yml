@@ -21,7 +21,10 @@
     name:
       - build-essential
       - curl
+      - gnupg
+      - gnupg1
       - gnupg2
+      - gpg
       - liblzma-dev
       - libpq-dev
       - patch
