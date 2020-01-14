@@ -12,7 +12,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     [
         'rails.service',
         'rails-restart.service',
-        'rails-restart.path',
         'rails-puma.service',
         'rails-sidekiq.service',
     ],
