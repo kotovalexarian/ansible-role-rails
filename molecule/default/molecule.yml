@@ -21,14 +21,14 @@ platforms:
   - name: debian9
     box: debian/stretch64
   # Debian 10 Buster
-  # - name: debian10
-  #   box: debian/buster64
+  - name: debian10
+    box: debian/buster64
   # Ubuntu 16.04 LTS Xenial Xerus
-  # - name: ubuntu1604
-  #   box: ubuntu/xenial64
+  - name: ubuntu1604
+    box: ubuntu/xenial64
   # Ubuntu 18.04 LTS Bionic Beaver
-  # - name: ubuntu1804
-  #   box: ubuntu/bionic64
+  - name: ubuntu1804
+    box: ubuntu/bionic64
   # Ubuntu 19.10 Eoan Ermine
-  # - name: ubuntu1910
-  #   box: ubuntu/eoan64
+  - name: ubuntu1910
+    box: ubuntu/eoan64
