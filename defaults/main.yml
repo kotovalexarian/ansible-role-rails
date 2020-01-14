@@ -4,6 +4,5 @@ rails__user: rails
 rails__group: rails
 rails__root_dir: '/opt/rails'
 rails__service: rails
-rails__ruby: 'ruby-2.6.2'
 rails__gemset: rails
 rails__env: production
