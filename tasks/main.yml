@@ -2,6 +2,18 @@
 - name: Validate variables
   action: validate_vars
 
+- name: Install system packages
+  apt:
+    update_cache: true
+    name:
+      - apt-transport-https
+      - build-essential
+      - liblzma-dev
+      - libpq-dev
+      - patch
+      - postgresql-client
+      - zlib1g-dev
+
 - name: Add Yarn APT key
   apt_key:
     id: 72ECF46A56B4AD39C907BBB71646B01B86E50310
@@ -15,17 +27,11 @@
     group: root
     content: 'deb https://dl.yarnpkg.com/debian/ stable main'
 
-- name: Install system packages
+- name: Install Yarn
   apt:
+    update_cache: true
     cache_valid_time: 0
-    name:
-      - build-essential
-      - liblzma-dev
-      - libpq-dev
-      - patch
-      - postgresql-client
-      - yarn
-      - zlib1g-dev
+    name: yarn
 
 - name: Create RVM gemset
   shell: >
