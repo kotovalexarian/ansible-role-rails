@@ -2,21 +2,8 @@
 - name: Validate variables
   action: validate_vars
 
-- name: Install system packages
-  apt:
-    update_cache: true
-    name:
-      - apt-transport-https
-      - build-essential
-      - liblzma-dev
-      - libpq-dev
-      - patch
-      - postgresql-client
-      - zlib1g-dev
-
+- include_tasks: system.yml
 - include_tasks: yarn.yml
 - include_tasks: rvm_gemset.yml
 - include_tasks: bundler.yml
-- include_tasks: system.yml
-- include_tasks: dirs.yml
 - include_tasks: services.yml
