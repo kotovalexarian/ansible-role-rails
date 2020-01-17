@@ -1,5 +1,14 @@
 ---
+- name: Check RVM gemset
+  shell: >
+    /bin/bash --login -c
+    "{{ rails__rvm }} use {{ rails__ruby }}@{{ rails__gemset }}"
+  ignore_errors: true
+  register: rails__check_rvm_gemset_result
+  changed_when: false
+
 - name: Create RVM gemset
   shell: >
-    /bin/bash --login -c "{{ rails__rvm }} use {{ rails__ruby }}@{{ rails__gemset }} --create"
-  changed_when: false
+    /bin/bash --login -c
+    "{{ rails__rvm }} use {{ rails__ruby }}@{{ rails__gemset }} --create"
+  when: rails__check_rvm_gemset_result.rc != 0
