@@ -7,6 +7,10 @@
   register: rails__check_rvm_gemset_result
   changed_when: false
 
+- name: Debug RVM gemset
+  debug:
+    var: rails__check_rvm_gemset_result
+
 - name: Create RVM gemset
   shell: >
     /bin/bash --login -c

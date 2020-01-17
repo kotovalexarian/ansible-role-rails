@@ -7,6 +7,10 @@
   register: rails__check_bundler_result
   changed_when: false
 
+- name: Debug Bundler
+  debug:
+    var: rails__check_bundler_result
+
 - name: Install Bundler
   shell: >
     /bin/bash --login -c
