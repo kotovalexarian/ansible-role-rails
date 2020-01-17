@@ -1,0 +1,12 @@
+---
+- name: Create system group
+  group:
+    name: '{{ rails__group }}'
+    system: true
+
+- name: Create system user
+  user:
+    name: '{{ rails__user }}'
+    group: '{{ rails__group }}'
+    system: true
+    create_home: false

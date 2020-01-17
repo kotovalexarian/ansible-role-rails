@@ -1,0 +1,14 @@
+---
+- name: Check Bundler
+  shell: >
+    /bin/bash --login -c
+    "{{ rails__rvm_do }} gem info bundler --installed --version '~> 2.0'"
+    || true
+  register: rails__bundler_result
+  changed_when: false
+
+- name: Install Bundler
+  shell: >
+    /bin/bash --login -c
+    "{{ rails__rvm_do }} gem install bundler -v '~> 2.0'"
+  when: "rails__bundler_result.stdout is search('false')"

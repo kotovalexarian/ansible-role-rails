@@ -1,0 +1,19 @@
+---
+- name: Add Yarn APT key
+  apt_key:
+    id: 72ECF46A56B4AD39C907BBB71646B01B86E50310
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+- name: Add Yarn APT repository
+  copy:
+    dest: /etc/apt/sources.list.d/yarn.list
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+    content: 'deb https://dl.yarnpkg.com/debian/ stable main'
+
+- name: Install Yarn
+  apt:
+    update_cache: true
+    cache_valid_time: 0
+    name: yarn

@@ -1,0 +1,45 @@
+---
+- name: Create general service
+  template:
+    src: templates/rails.service
+    dest: '/etc/systemd/system/{{ rails__service }}.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: rails | Update general service
+
+- name: Create restart service
+  template:
+    src: templates/rails-restart.service
+    dest: '/etc/systemd/system/{{ rails__service }}-restart.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: rails | Update restarter service
+
+- name: Create restart path
+  template:
+    src: templates/rails-restart.path
+    dest: '/etc/systemd/system/{{ rails__service }}-restart.path'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: rails | Update restarter path
+
+- name: Create Puma service
+  template:
+    src: templates/rails-puma.service
+    dest: '/etc/systemd/system/{{ rails__service }}-puma.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: rails | Update Puma service
+
+- name: Create Sidekiq service
+  template:
+    src: templates/rails-sidekiq.service
+    dest: '/etc/systemd/system/{{ rails__service }}-sidekiq.service'
+    mode: 'u=rw,g=r,o=r'
+    owner: root
+    group: root
+  notify: rails | Update Sidekiq service

@@ -1,0 +1,5 @@
+---
+- name: Create RVM gemset
+  shell: >
+    /bin/bash --login -c "{{ rails__rvm }} use {{ rails__ruby }}@{{ rails__gemset }} --create"
+  changed_when: false
