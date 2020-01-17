@@ -3,6 +3,7 @@
   apt_key:
     id: 72ECF46A56B4AD39C907BBB71646B01B86E50310
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
+  register: rails__add_yarn_apt_key_result
 
 - name: Add Yarn APT repository
   copy:
@@ -11,9 +12,17 @@
     owner: root
     group: root
     content: 'deb https://dl.yarnpkg.com/debian/ stable main'
+  register: rails__add_yarn_apt_repo_result
 
-- name: Install Yarn
+- name: Update APT cache
   apt:
     update_cache: true
     cache_valid_time: 0
+  when: >
+    rails__add_yarn_apt_key_result  is succeeded or
+    rails__add_yarn_apt_repo_result is succeeded
+
+- name: Install Yarn
+  apt:
+    update_cache: false
     name: yarn
