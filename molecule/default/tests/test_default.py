@@ -8,6 +8,23 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 @pytest.mark.parametrize(
+    'package_name',
+    [
+        'apt-transport-https',
+        'build-essential',
+        'liblzma-dev',
+        'libpq-dev',
+        'patch',
+        'postgresql-client',
+        'zlib1g-dev',
+        'yarn',
+    ],
+)
+def test_packages(host, package_name):
+    assert host.package(package_name).is_installed
+
+
+@pytest.mark.parametrize(
     'service_name',
     [
         'rails.service',
