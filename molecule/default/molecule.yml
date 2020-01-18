@@ -2,9 +2,7 @@
 dependency:
   name: galaxy
 driver:
-  name: vagrant
-  provider:
-    name: virtualbox
+  name: docker
 lint:
   name: yamllint
 provisioner:
@@ -19,4 +17,4 @@ verifier:
 platforms:
   # Debian 9 Stretch
   - name: debian9
-    box: debian/stretch64
+    image: debian:9
