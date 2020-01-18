@@ -34,3 +34,11 @@
     - '{{ rails__root_dir }}'
     - '{{ rails__root_dir }}/shared'
     - '{{ rails__root_dir }}/shared/config'
+
+- name: Create application environment file
+  template:
+    src: templates/environment
+    dest: '{{ rails__root_dir }}/environment'
+    mode: 'u=rw,g=r,o='
+    owner: '{{ rails__deploy_user }}'
+    group: '{{ rails__group }}'
