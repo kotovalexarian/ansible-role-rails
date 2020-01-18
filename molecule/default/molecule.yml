@@ -2,7 +2,9 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: virtualbox
 lint:
   name: yamllint
 provisioner:
@@ -17,16 +19,16 @@ verifier:
 platforms:
   # Debian 9 Stretch
   - name: debian9
-    image: debian:9
+    box: debian/stretch64
   # Debian 10 Buster
   - name: debian10
-    image: debian:10
+    box: debian/buster64
   # Ubuntu 16.04 LTS Xenial Xerus
   - name: ubuntu1604
-    image: ubuntu:16.04
+    box: ubuntu/xenial64
   # Ubuntu 18.04 LTS Bionic Beaver
   - name: ubuntu1804
-    image: ubuntu:18.04
+    box: ubuntu/bionic64
   # Ubuntu 19.10 Eoan Ermine
   - name: ubuntu1910
-    image: ubuntu:19.10
+    box: ubuntu/eoan64
