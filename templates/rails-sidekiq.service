@@ -5,6 +5,7 @@ PartOf={{ rails__service }}.service
 Description={{ rails__sidekiq_descr }}
 
 [Service]
+EnvironmentFile={{ rails__root_dir }}/environment
 ExecStart={{ rails__rvm_do }} bundle exec sidekiq --environment {{ rails__env }}
 Group={{ rails__group }}
 Restart=always

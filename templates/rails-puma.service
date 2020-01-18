@@ -5,6 +5,7 @@ PartOf={{ rails__service }}.service
 Description={{ rails__puma_descr }}
 
 [Service]
+EnvironmentFile={{ rails__root_dir }}/environment
 ExecStart={{ rails__rvm_do }} bundle exec puma --environment {{ rails__env }}
 Group={{ rails__group }}
 Restart=always
