@@ -8,3 +8,8 @@
       cache_valid_time: 86400
   roles:
     - role: rails
+      vars:
+        rails__env_vars:
+          FOO1=123
+          _BAR=car
+          c_1d=baz

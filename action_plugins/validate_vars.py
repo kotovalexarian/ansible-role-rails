@@ -9,6 +9,7 @@ class ActionModule(ActionBase):
     private_var_names = [
         'deploy_user',
         'env',
+        'env_vars',
         'gemset',
         'group',
         'root_dir',
@@ -21,6 +22,8 @@ class ActionModule(ActionBase):
     path_re = re.compile(r'^/[-_/a-z0-9]*$')
 
     common_name_re = re.compile(r'^[a-z_][a-z0-9_-]{0,30}(\$|[a-z0-9_-])?$')
+
+    env_var_name_re = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*$')
 
     ruby_version_re = re.compile(r'^ruby-[0-9]+\.[0-9]+\.[0-9]+$')
 
@@ -76,6 +79,16 @@ class ActionModule(ActionBase):
             return 'is not str'
         if value not in ['production', 'staging']:
             return 'is invalid'
+
+    def validate_env_vars(self, obj):
+        if not isinstance(obj, dict):
+            return 'is not dict'
+        if not all(isinstance(key, str) for key in obj.keys()):
+            return 'key is not str'
+        if not all(self.env_var_name_re.fullmatch(key) for key in obj.keys()):
+            return 'key has invalid format'
+        if not all(isinstance(value, str) for value in obj.values()):
+            return 'value is not str'
 
     def validate_gemset(self, value):
         if not isinstance(value, str):
