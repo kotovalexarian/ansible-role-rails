@@ -12,6 +12,7 @@
           - gnupg
           - gnupg2
           - procps
+          - systemd
   roles:
     - name: rvm.ruby
       vars:
