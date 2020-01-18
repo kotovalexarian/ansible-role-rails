@@ -18,3 +18,15 @@ platforms:
   # Debian 9 Stretch
   - name: debian9
     image: debian:9
+  # Debian 10 Buster
+  - name: debian10
+    image: debian:10
+  # Ubuntu 16.04 LTS Xenial Xerus
+  - name: ubuntu1604
+    image: ubuntu:16.04
+  # Ubuntu 18.04 LTS Bionic Beaver
+  - name: ubuntu1804
+    image: ubuntu:18.04
+  # Ubuntu 19.10 Eoan Ermine
+  - name: ubuntu1910
+    image: ubuntu:19.10
