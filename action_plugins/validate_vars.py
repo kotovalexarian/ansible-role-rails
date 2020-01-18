@@ -87,8 +87,6 @@ class ActionModule(ActionBase):
             return 'key is not str'
         if not all(self.env_var_name_re.fullmatch(key) for key in obj.keys()):
             return 'key has invalid format'
-        if not all(isinstance(value, str) for value in obj.values()):
-            return 'value is not str'
 
     def validate_gemset(self, value):
         if not isinstance(value, str):

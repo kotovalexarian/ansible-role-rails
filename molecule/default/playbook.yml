@@ -10,6 +10,6 @@
     - role: rails
       vars:
         rails__env_vars:
-          FOO1: '123'
+          FOO1: 123
           _BAR: car
           c_1d: baz
