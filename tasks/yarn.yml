@@ -19,8 +19,8 @@
     update_cache: true
     cache_valid_time: 0
   when: >
-    rails__add_yarn_apt_key_result  is succeeded or
-    rails__add_yarn_apt_repo_result is succeeded
+    rails__add_yarn_apt_key_result.changed or
+    rails__add_yarn_apt_repo_result.changed
 
 - name: Install Yarn
   apt:
