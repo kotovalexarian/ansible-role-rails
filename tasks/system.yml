@@ -35,6 +35,15 @@
     - '{{ rails__root_dir }}/shared'
     - '{{ rails__root_dir }}/shared/config'
 
+- name: Create master encryption key
+  copy:
+    content: "{{ rails__master_key }}\n"
+    dest: '{{ rails__root_dir }}/shared/config/master.key'
+    mode: 'u=rw,g=r,o='
+    owner: '{{ rails__deploy_user }}'
+    group: '{{ rails__group }}'
+  when: rails__root_dir is not none
+
 - name: Create application environment file
   template:
     src: templates/environment
